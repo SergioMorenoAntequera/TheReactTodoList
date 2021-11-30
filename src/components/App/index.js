@@ -10,7 +10,6 @@ export function App() {
     {id:4, name:"Hola que pasa 4", done: false},
     {id:5, name:"Hola que pasa 5", done: false},
   ]
-  console.log(TODOS)
 
   return (
     <AppUI todoList={TODOS}/>
