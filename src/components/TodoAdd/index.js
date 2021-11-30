@@ -7,6 +7,9 @@ export function TodoAdd({ addTodo }) {
   const updateName = (e) => {
     setNewTodo({...newTodo, name:e.target.value});
   }
+  const updateDone = (e) => {
+    setNewTodo({...newTodo, done:e.target.checked});
+  }
 
   const submitTodo = () => {
     addTodo({...newTodo})
@@ -15,7 +18,8 @@ export function TodoAdd({ addTodo }) {
   return (<>
   
     <input onKeyUp={updateName} type="text"/>
-    <button onClick={submitTodo}> añadir </button>
+    <input onChange={updateDone} type="checkbox"/>
+    <button onClick={submitTodo}> Add </button>
 
   </>);
 }

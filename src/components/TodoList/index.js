@@ -11,6 +11,7 @@ export function TodoList(props) {
     let auxNewTodo = newTodo;
     auxNewTodo.id = auxTodos[auxTodos.length - 1].id + 1
     auxTodos.push(auxNewTodo);
+    console.log(auxTodos)
     setTodoList(auxTodos);
   }
 
