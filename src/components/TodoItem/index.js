@@ -2,9 +2,7 @@ import './style.css';
 
 export function TodoItem({ name, done }) {
 
-  return (
-    <p className = {`todo-item ${ done ? "done":"" }`} > 
-      {name} 
-    </p> 
-  );
+  return (<div className = {`todo-item ${ done ? "done":"" }`}> 
+    <p> {name} </p> 
+  </div>);
 }
