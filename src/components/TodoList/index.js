@@ -9,22 +9,34 @@ export function TodoList(props) {
   const addTodo = (newTodo) => {
     let auxTodos = [...todoList];
     let auxNewTodo = newTodo;
-    auxNewTodo.id = auxTodos[auxTodos.length - 1].id + 1
+    auxNewTodo.id = auxTodos[auxTodos.length - 1]?.id ?? 0 + 1;
     auxTodos.push(auxNewTodo);
-    console.log(auxTodos)
+    setTodoList(auxTodos);
+  }
+
+  const deleteTodo = (todoToRemoveId) => {
+    let auxTodos = [...todoList];
+    var index = auxTodos.findIndex(it=>it.id === todoToRemoveId)
+    auxTodos.splice(index, 1);
+    setTodoList(auxTodos);
+  }
+
+  const toggleDone = (todoId) => {
+    let auxTodos = [...todoList];
+    var index = auxTodos.findIndex(it=>it.id === todoId)
+    auxTodos[index] = {...auxTodos[index], done:!auxTodos[index].done}
     setTodoList(auxTodos);
   }
 
   return (<>
-    
+  
     <TodoAdd addTodo={addTodo}/>
 
     {todoList.map(todo => 
-      <TodoItem key={todo.id} 
-                name={todo.name} 
-                done={todo.done}>
-
-      </TodoItem>
+      <TodoItem key={todo.id} todo={todo} 
+        toggleDone={toggleDone}
+        deleteTodo={deleteTodo}
+      />
     )}
 
   </>);
