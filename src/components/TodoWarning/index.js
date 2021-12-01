@@ -3,9 +3,17 @@ import { TodoItem } from '../TodoItem';
 import { TodoAdd } from '../TodoAdd';
 import './style.css';
 
-export function TodoList() {
+export function TodoWarning( {title, body, button} ) {
   
-  return (<>
-    <div> haha </div>
-  </>);
+  console.log(button)
+  return (<div>
+    <h2> {title} </h2>
+    <p> {body} </p>
+
+    <div hidden={button == undefined}>
+        <button onClick={button?.action}> 
+          {button?.text} 
+        </button>
+    </div>
+  </div>);
 }
