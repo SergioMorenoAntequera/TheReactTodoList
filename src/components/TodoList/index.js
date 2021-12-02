@@ -7,6 +7,7 @@ import './style.css';
 
 export function TodoList(props) {
   const [todoList, setTodoList] = useState(props.todoList)
+  const [todoWarning, setTodoWarning] = useState({title:"", body:"", button:{text:"", action:undefined}})
 
   const addTodo = (newTodo) => {
     newTodo.id = (todoList[todoList.length - 1]?.id ?? 1) + 1;
@@ -22,26 +23,36 @@ export function TodoList(props) {
     setTodoList(auxTodos);
   }
 
-  const _warn = () => {
-    
+  const checkWarnings = () => {
+    var auxWarning = {...todoWarning}
+
+    if(todoList.length === 0){
+      auxWarning = {title:"A", body:"a", button:{text:"aaa", action:()=>{console.log("ni uno")}}}
+    }
+    if(todoList.length > 10){
+      auxWarning = {title:"B", body:"b", button:{text:"bbb", action:()=>{console.log("demasiadoos")}}}
+    }
+
+    if(!auxWarning.title) {
+      setTodoWarning(auxWarning)
+    }
   }
 
-  const buttonTest = {text:"button", action:()=>{console.log("oh waw")}}
-
   return (<>
-    <TodoWarning title="" body="aaaaa" 
-      button={{text:"button", action:()=>{console.log("oh waw")}}}
-    />
-    
+    <TodoAdd addTodo={addTodo}/>
     <TodoCounter total={todoList.length} done={todoList.filter(it=>it.done).length}/>
 
-    <TodoAdd addTodo={addTodo}/>
-    {todoList.map(todo => 
-      <TodoItem key={todo.id} todo={todo} 
-        toggleDone={toggleDone}
-        deleteTodo={deleteTodo}
-      />
-    )}
+    {todoWarning.title === "" ? 
+      todoList.map(todo => 
+        <TodoItem key={todo.id} todo={todo} 
+          toggleDone={toggleDone}
+          deleteTodo={deleteTodo}
+        />
+      )
+      : 
+      <TodoWarning title={todoWarning.title} body={todoWarning.body} button={todoWarning.button}/>  
+    } 
+    
 
   </>);
 }
