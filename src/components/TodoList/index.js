@@ -1,6 +1,7 @@
 import react, { useState } from "react";
 import { TodoItem } from '../TodoItem';
 import { TodoAdd } from '../TodoAdd';
+import { TodoCounter } from '../TodoCounter';
 import { TodoWarning } from '../TodoWarning';
 import './style.css';
 
@@ -38,6 +39,8 @@ export function TodoList(props) {
       button={{text:"button", action:()=>{console.log("oh waw")}}}
     />
     
+    <TodoCounter total={todoList.length} done={todoList.filter(it=>it.done).length}/>
+
     <TodoAdd addTodo={addTodo}/>
     {todoList.map(todo => 
       <TodoItem key={todo.id} todo={todo} 
