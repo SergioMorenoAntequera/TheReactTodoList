@@ -4,8 +4,9 @@ import { TodoAdd } from '../TodoAdd';
 import './style.css';
 
 export function TodoWarning( {title, body, button} ) {
+
   
-  console.log(button)
+  if(title == "") return(<></>)
   return (<div>
     <h2> {title} </h2>
     <p> {body} </p>

@@ -9,17 +9,11 @@ export function TodoList(props) {
   const [todoList, setTodoList] = useState(props.todoList)
 
   const addTodo = (newTodo) => {
-    let auxTodos = [...todoList];
-    let auxNewTodo = newTodo;
-    auxNewTodo.id = auxTodos[auxTodos.length - 1].id + 1;
-    auxTodos.push(auxNewTodo);
-    setTodoList(auxTodos);
+    newTodo.id = (todoList[todoList.length - 1]?.id ?? 1) + 1;
+    setTodoList([...todoList, newTodo]);
   }
   const deleteTodo = (todoToRemoveId) => {
-    let auxTodos = [...todoList];
-    var index = auxTodos.findIndex(it=>it.id === todoToRemoveId)
-    auxTodos.splice(index, 1);
-    setTodoList(auxTodos);
+    setTodoList([...todoList].filter(it=>it.id !== todoToRemoveId));
   }
   const toggleDone = (todoId) => {
     let auxTodos = [...todoList];
@@ -35,7 +29,7 @@ export function TodoList(props) {
   const buttonTest = {text:"button", action:()=>{console.log("oh waw")}}
 
   return (<>
-    <TodoWarning title="aaa" body="aaaaa" 
+    <TodoWarning title="" body="aaaaa" 
       button={{text:"button", action:()=>{console.log("oh waw")}}}
     />
     
