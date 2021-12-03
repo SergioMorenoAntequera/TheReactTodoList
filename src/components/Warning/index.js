@@ -20,3 +20,18 @@ export function Warning( props ) {
     }
   </div>);
 }
+
+export const check = (cases, successCB) => {
+  let errorMessage = "" 
+  cases.forEach(probCase => {
+    if(probCase.condition()){
+      errorMessage += probCase.errorMessage + "\n"
+    }  
+  });
+
+  if(errorMessage === ""){
+    successCB()
+  } else {
+    return errorMessage;
+  }
+}
