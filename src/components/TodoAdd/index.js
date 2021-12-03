@@ -4,7 +4,7 @@ import './style.css';
 
 export function TodoAdd({ addTodo }) {
   const [newTodo, setNewTodo] = useState({id:-1, name:"", done:false})
-  const [warningMessage, setWarningMessage] = useState("")
+  const [warningMessages, setWarningMessages] = useState([])
     
 
   const updateName = (e) => {
@@ -16,14 +16,14 @@ export function TodoAdd({ addTodo }) {
 
   const submitTodo = () => {
     let newTodoAux = {...newTodo}
-    var errorMessage = check([
+    var errorMessages = check([
       {condition: ()=> {return newTodoAux.name.length === 0},
         errorMessage: "You must introduce a name to your TODO to add it"},
       {condition: ()=> {return newTodoAux.name === ""},
         errorMessage: "No ffensie word pls, my uncle and my mom sleep together"}
-      ], () => {addTodo({...newTodoAux})}
+      ], () => {addTodo(newTodoAux)}
     )
-    setWarningMessage(errorMessage);
+    setWarningMessages(errorMessages);
   }
 
   
@@ -36,7 +36,12 @@ export function TodoAdd({ addTodo }) {
       <button type="submit" onClick={submitTodo}> Add </button>
     </form>
     
-    <Warning title={warningMessage}/>  
+    {
+      warningMessages.map((message, index) => {
+        return <Warning key={index} title={message}/>
+      })
+    }
+      
     
     </>);
 }

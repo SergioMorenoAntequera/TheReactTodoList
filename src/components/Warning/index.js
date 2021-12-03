@@ -22,16 +22,16 @@ export function Warning( props ) {
 }
 
 export const check = (cases, successCB) => {
-  let errorMessage = "" 
+  let errorMessages = [] 
   cases.forEach(probCase => {
     if(probCase.condition()){
-      errorMessage += probCase.errorMessage + "\n"
+      errorMessages.push(probCase.errorMessage);
     }  
   });
 
-  if(errorMessage === ""){
+  if(errorMessages.length === 0){
     successCB()
   } else {
-    return errorMessage;
+    return errorMessages;
   }
 }
