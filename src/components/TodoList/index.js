@@ -22,6 +22,7 @@ export function TodoList(props) {
     let auxTodos = [...todoList];
     var index = auxTodos.findIndex(it=>it.id === todoId)
     auxTodos[index] = {...auxTodos[index], done:!auxTodos[index].done}
+    setTodoList(auxTodos)
   }
 
   // const checkWarnings = () => {
