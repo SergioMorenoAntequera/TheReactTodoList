@@ -17,9 +17,11 @@ export function TodoAdd({ addTodo }) {
 
   return (<>
   
-    <input onKeyUp={updateName} type="text"/>
-    <input onChange={updateDone} type="checkbox"/>
-    <button onClick={submitTodo}> Add </button>
+    <form onSubmit={(event)=> {event.preventDefault(); submitTodo()}} action="">
+      <input onKeyUp={updateName} type="text"/>
+      <input onChange={updateDone} type="checkbox"/>
+      <button type="submit" onClick={submitTodo}> Add </button>
+    </form>  
 
   </>);
 }

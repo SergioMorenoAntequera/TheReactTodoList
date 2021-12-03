@@ -12,23 +12,23 @@ export function TodoList(props) {
     let auxNewTodo = newTodo;
     auxNewTodo.id = auxTodos[auxTodos.length - 1].id + 1;
     auxTodos.push(auxNewTodo);
-    setTodoList(auxTodos);
+    _warn(auxTodos);
   }
   const deleteTodo = (todoToRemoveId) => {
     let auxTodos = [...todoList];
     var index = auxTodos.findIndex(it=>it.id === todoToRemoveId)
     auxTodos.splice(index, 1);
-    setTodoList(auxTodos);
+    _warn(auxTodos);
   }
   const toggleDone = (todoId) => {
     let auxTodos = [...todoList];
     var index = auxTodos.findIndex(it=>it.id === todoId)
     auxTodos[index] = {...auxTodos[index], done:!auxTodos[index].done}
-    setTodoList(auxTodos);
+    _warn(auxTodos);
   }
 
-  const _warn = () => {
-    
+  const _warn = (newTodoList) => {
+    setTodoList(newTodoList);
   }
 
   const buttonTest = {text:"button", action:()=>{console.log("oh waw")}}
