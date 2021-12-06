@@ -17,10 +17,12 @@ export function TodoAdd({ addTodo }) {
   const submitTodo = () => {
     let newTodoAux = {...newTodo}
     var errorMessages = check([
-      {condition: ()=> {return newTodoAux.name.length === 0},
+      {condition: (newTodoAux.name.length === 0),
         errorMessage: "You must introduce a name to your TODO to add it"},
-      {condition: ()=> {return newTodoAux.name === ""},
-        errorMessage: "No ffensie word pls, my uncle and my mom sleep together"}
+      {condition: (newTodoAux.name === "dick"),
+        errorMessage: "No ffensie word pls, my uncle and my mom sleep together"},
+      {condition: (newTodoAux.name === "pra"),
+        errorMessage: "I wonder whoa re you"}
       ], () => {addTodo(newTodoAux)}
     )
     setWarningMessages(errorMessages);
@@ -40,8 +42,8 @@ export function TodoAdd({ addTodo }) {
       warningMessages.map((message, index) => {
         return <Warning key={index} title={message}/>
       })
-    }
-      
+    }      
     
-    </>);
+  
+  </>);
 }

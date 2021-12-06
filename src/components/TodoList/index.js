@@ -25,20 +25,11 @@ export function TodoList(props) {
     setTodoList(auxTodos)
   }
 
-  // const checkWarnings = () => {
-  //   if(todoList.length === 0){
-  //     auxWarning = {title:"A", body:"a", button:{text:"aaa", action:()=>{console.log("ni uno")}}}
-  //   }
-  //   if(todoList.length > 10){
-  //     auxWarning = {title:"B", body:"b", button:{text:"bbb", action:()=>{console.log("demasiadoos")}}}
-  //   }
-  // }
-
   return (<>
     <TodoAdd addTodo={addTodo}/>
     <TodoCounter total={todoList.length} done={todoList.filter(it=>it.done).length}/>
      
-    <Warning condition={()=> {return todoList.length === 0}} title={"No te queda naica"}>
+    <Warning condition={todoList.length === 0} title={"No te queda naica"}>
       {todoList.map(todo => 
         <TodoItem key={todo.id} todo={todo} 
           toggleDone={toggleDone}
