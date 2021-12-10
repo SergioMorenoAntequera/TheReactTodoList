@@ -3,9 +3,9 @@ import { TodoItem } from '../TodoItem';
 import { TodoAdd } from '../TodoAdd';
 import './style.css';
 
-export function TodoCounter( {total, done} ) {
+export function TodoCounter( {total, filtered, done} ) {
   
   return (<div>
-    <p> Se han completado {done} de {total} todos</p>
+    <p> Visibles {filtered} / {total} and done  {done} todos</p>
   </div>);
 }

@@ -28,8 +28,6 @@ export function TodoAdd({ addTodo }) {
     setWarningMessages(errorMessages);
   }
 
-  
-
   return (<>
   
     <form onSubmit={(event)=> {event.preventDefault()}} action="">
