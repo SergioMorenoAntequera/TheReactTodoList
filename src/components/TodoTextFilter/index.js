@@ -5,11 +5,11 @@ import { TodoCounter } from '../TodoCounter';
 import { Warning } from '../Warning';
 import './style.css';
 
-export function TodoTextFilter({ allTodos, setTodoList }) {
-  
-  function filter(e) {
-    let filtered = [...allTodos.filter(todo => todo.name.includes(e.target.value))]
-    setTodoList(filtered)
+export function TodoTextFilter({ setFilterText, setTodoListFiltered, filterList }) {
+
+  const filter = (e) => {
+    setFilterText(e.target.value) 
+    setTodoListFiltered(filterList(e.target.value, undefined))
   }
 
   return (<>

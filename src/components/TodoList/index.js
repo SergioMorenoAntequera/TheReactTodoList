@@ -8,15 +8,19 @@ import './style.css';
 
 export function TodoList(props) {
   const [todoList, setTodoList] = useState(props.todoList)
-  const allTodos = todoList;
-  const filteredTodos = [];
+  const [todoListFiltered, setTodoListFiltered] = useState(props.todoList)
+  const [filterText, setFilterText] = useState("")
 
   const addTodo = (newTodo) => {
     newTodo.id = (todoList[todoList.length - 1]?.id ?? 1) + 1;
-    setTodoList([...todoList, newTodo]);
+    let auxList = [...todoList, newTodo] 
+    setTodoList(auxList);
+    setTodoListFiltered(filterList(undefined, auxList));
   }
   const deleteTodo = (todoToRemoveId) => {
-    setTodoList([...todoList].filter(it=>it.id !== todoToRemoveId));
+    let auxList = [...todoList].filter(it=>it.id !== todoToRemoveId) 
+    setTodoList(auxList);
+    setTodoListFiltered(filterList(undefined, auxList));
   }
   const toggleDone = (todoId) => {
     let auxTodos = [...todoList];
@@ -24,18 +28,41 @@ export function TodoList(props) {
     auxTodos[index] = {...auxTodos[index], done:!auxTodos[index].done}
     setTodoList(auxTodos)
   }
+  const filterList = (textToCompare, listToCompare) => {
+    textToCompare = textToCompare ?? filterText;
+    listToCompare = listToCompare ?? todoList
+
+    if(textToCompare == "") return [...listToCompare]
+    let filtered = [...listToCompare.filter(todo => 
+      todo.name.trim().toLowerCase().includes(textToCompare.trim().toLowerCase())
+    )]
+    return filtered;
+  }
 
   return (<>
     <TodoAdd addTodo={addTodo}/>
-    <TodoCounter total={todoList.length} filtered={0} done={todoList.filter(it=>it.done).length}/>
-    <TodoTextFilter allTodos={allTodos} setTodoList={setTodoList}/>
+    <TodoCounter 
+      total={todoList.length} 
+      filtered={todoListFiltered.length} 
+      done={todoList.filter(it=>it.done).length}
+    />
+    <TodoTextFilter 
+      setFilterText={setFilterText} 
+      setTodoListFiltered={setTodoListFiltered} 
+      filterList={filterList}
+    />
+
     <Warning condition={todoList.length === 0} title={"No te queda naica"}>
-      {todoList.map(todo => 
-        <TodoItem key={todo.id} todo={todo} 
-          toggleDone={toggleDone}
-          deleteTodo={deleteTodo}
-        />
-      )}  
+      <Warning condition={todoListFiltered.length === 0} title={"No hemos encontrado naica"}>
+        
+        {todoListFiltered.map(todo => 
+          <TodoItem key={todo.id} todo={todo} 
+            toggleDone={toggleDone}
+            deleteTodo={deleteTodo}
+          />
+        )}
+        
+      </Warning>  
     </Warning>   
   </>);
 }
