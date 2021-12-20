@@ -3,13 +3,15 @@ import { TodoItem } from '../TodoItem';
 import { TodoAdd } from '../TodoAdd';
 import { TodoCounter } from '../TodoCounter';
 import { TodoTextFilter } from '../TodoTextFilter';
+import { useLocalStorage } from '../../utils/Utils';
 import { Warning } from '../Warning';
 import './style.css';
 
 export function TodoList(props) {
-  const [todoList, setTodoList] = useState(props.todoList)
+  const [todoList, setTodoList] = useLocalStorage("TODOS_V1", props.todoList)
   const [todoListFiltered, setTodoListFiltered] = useState(props.todoList)
   const [filterText, setFilterText] = useState("")
+
 
   const addTodo = (newTodo) => {
     newTodo.id = (todoList[todoList.length - 1]?.id ?? 1) + 1;
@@ -38,6 +40,8 @@ export function TodoList(props) {
     )]
     return filtered;
   }
+
+  
 
   return (<>
     <TodoAdd addTodo={addTodo}/>
