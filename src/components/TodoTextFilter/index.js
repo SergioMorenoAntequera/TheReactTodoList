@@ -1,8 +1,3 @@
-import { useState } from "react";
-import { TodoItem } from '../TodoItem';
-import { TodoAdd } from '../TodoAdd';
-import { TodoCounter } from '../TodoCounter';
-import { Warning } from '../Warning';
 import './style.css';
 
 export function TodoTextFilter({ setFilterText, setTodoListFiltered, filterList }) {

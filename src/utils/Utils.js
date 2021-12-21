@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export const useLocalStorage = (name, defaultValue) => {
     var inLocalStorage = JSON.parse(localStorage.getItem(name))
@@ -14,7 +14,7 @@ export const useLocalStorage = (name, defaultValue) => {
     if(inLocalStorage === null) {
         _setLocalElement(defaultValue)
     }
-    if(inLocalStorage !== null  && JSON.stringify(storageItemAux) != JSON.stringify(inLocalStorage)) {
+    if(inLocalStorage !== null  && JSON.stringify(storageItemAux) !== JSON.stringify(inLocalStorage)) {
         storageItemAux = inLocalStorage
         setStorageItem(storageItemAux)
     }

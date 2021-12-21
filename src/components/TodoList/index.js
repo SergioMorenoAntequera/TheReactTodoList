@@ -34,7 +34,7 @@ export function TodoList(props) {
     textToCompare = textToCompare ?? filterText;
     listToCompare = listToCompare ?? todoList
 
-    if(textToCompare == "") return [...listToCompare]
+    if(textToCompare === "") return [...listToCompare]
     let filtered = [...listToCompare.filter(todo => 
       todo.name.trim().toLowerCase().includes(textToCompare.trim().toLowerCase())
     )]
