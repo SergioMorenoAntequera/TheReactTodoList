@@ -9,9 +9,8 @@ import './style.css';
 
 export function TodoList(props) {
   const [todoList, setTodoList] = useLocalStorage("TODOS_V1", props.todoList)
-  const [todoListFiltered, setTodoListFiltered] = useState(props.todoList)
+  const [todoListFiltered, setTodoListFiltered] = useState(todoList)
   const [filterText, setFilterText] = useState("")
-
 
   const addTodo = (newTodo) => {
     newTodo.id = (todoList[todoList.length - 1]?.id ?? 1) + 1;
