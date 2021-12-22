@@ -1,10 +1,9 @@
 import './style.css';
 
-export function TodoTextFilter({ setFilterText, setTodoListFiltered, filterList }) {
+export function TodoTextFilter({ setFilterText }) {
 
   const filter = (e) => {
     setFilterText(e.target.value) 
-    setTodoListFiltered(filterList(e.target.value, undefined))
   }
 
   return (<>

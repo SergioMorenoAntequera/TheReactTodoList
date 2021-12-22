@@ -9,26 +9,8 @@ import './style.css';
 
 export function TodoList(props) {
   const [todoList, setTodoList] = useLocalStorage("TODOS_V1", props.todoList)
-  const [todoListFiltered, setTodoListFiltered] = useState(todoList)
   const [filterText, setFilterText] = useState("")
 
-  const addTodo = (newTodo) => {
-    newTodo.id = (todoList[todoList.length - 1]?.id ?? 1) + 1;
-    let auxList = [...todoList, newTodo] 
-    setTodoList(auxList);
-    setTodoListFiltered(filterList(undefined, auxList));
-  }
-  const deleteTodo = (todoToRemoveId) => {
-    let auxList = [...todoList].filter(it=>it.id !== todoToRemoveId) 
-    setTodoList(auxList);
-    setTodoListFiltered(filterList(undefined, auxList));
-  }
-  const toggleDone = (todoId) => {
-    let auxTodos = [...todoList];
-    var index = auxTodos.findIndex(it=>it.id === todoId)
-    auxTodos[index] = {...auxTodos[index], done:!auxTodos[index].done}
-    setTodoList(auxTodos)
-  }
   const filterList = (textToCompare, listToCompare) => {
     textToCompare = textToCompare ?? filterText;
     listToCompare = listToCompare ?? todoList
@@ -40,7 +22,28 @@ export function TodoList(props) {
     return filtered;
   }
 
+  let todoListFiltered = []
+  if(!filterText) {
+    todoListFiltered = todoList;
+  } else {
+    todoListFiltered = filterList()
+  }
   
+  const addTodo = (newTodo) => {
+    newTodo.id = (todoList[todoList.length - 1]?.id ?? 1) + 1;
+    let auxList = [...todoList, newTodo] 
+    setTodoList(auxList);
+  }
+  const deleteTodo = (todoToRemoveId) => {
+    let auxList = [...todoList].filter(it=>it.id !== todoToRemoveId) 
+    setTodoList(auxList);
+  }
+  const toggleDone = (todoId) => {
+    let auxTodos = [...todoList];
+    var index = auxTodos.findIndex(it=>it.id === todoId)
+    auxTodos[index] = {...auxTodos[index], done:!auxTodos[index].done}
+    setTodoList(auxTodos);
+  }
 
   return (<>
     <TodoAdd addTodo={addTodo}/>
@@ -51,8 +54,6 @@ export function TodoList(props) {
     />
     <TodoTextFilter 
       setFilterText={setFilterText} 
-      setTodoListFiltered={setTodoListFiltered} 
-      filterList={filterList}
     />
 
     <Warning condition={todoList.length === 0} title={"No te queda naica"}>

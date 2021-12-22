@@ -5,6 +5,7 @@ export const useLocalStorage = (name, defaultValue) => {
     let parsedLocalStorage;
 
     if(!inLocalStorage) {
+        console.log(inLocalStorage)
         localStorage.setItem(name, JSON.stringify(defaultValue));
         parsedLocalStorage = defaultValue;
     } else {
