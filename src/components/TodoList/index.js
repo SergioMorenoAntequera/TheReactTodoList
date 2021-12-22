@@ -8,7 +8,12 @@ import { Warning } from '../Warning';
 import './style.css';
 
 export function TodoList(props) {
-  const [todoList, setTodoList] = useLocalStorage("TODOS_V1", props.todoList)
+  const {
+    storageItem: todoList, 
+    setLocalElement: setTodoList, 
+    loading
+  } = useLocalStorage("TODOS_V1", [])
+
   const [filterText, setFilterText] = useState("")
 
   const filterList = (textToCompare, listToCompare) => {
@@ -46,6 +51,9 @@ export function TodoList(props) {
   }
 
   return (<>
+    {loading && <p> Cargando, relaja </p>}
+    
+
     <TodoAdd addTodo={addTodo}/>
     <TodoCounter 
       total={todoList.length} 
