@@ -11,7 +11,8 @@ export function TodoList(props) {
   const {
     storageItem: todoList, 
     setLocalElement: setTodoList, 
-    loading
+    loading,
+    error
   } = useLocalStorage("TODOS_V1", [])
 
   const [filterText, setFilterText] = useState("")
@@ -51,9 +52,6 @@ export function TodoList(props) {
   }
 
   return (<>
-    {loading && <p> Cargando, relaja </p>}
-    
-
     <TodoAdd addTodo={addTodo}/>
     <TodoCounter 
       total={todoList.length} 
@@ -64,17 +62,16 @@ export function TodoList(props) {
       setFilterText={setFilterText} 
     />
 
-    <Warning condition={todoList.length === 0} title={"No te queda naica"}>
-      <Warning condition={todoListFiltered.length === 0} title={"No hemos encontrado naica"}>
+    {loading && !error && <p> We are loading you list froom the "API" ;) </p>}
+    {!loading && todoList.length === 0 && <p> No te queda naica </p>}
+    {!loading && todoListFiltered.length === 0 && <p> No hemos encntrao naica </p>}
         
-        {todoListFiltered.map(todo => 
-          <TodoItem key={todo.id} todo={todo} 
-            toggleDone={toggleDone}
-            deleteTodo={deleteTodo}
-          />
-        )}
+    {todoListFiltered.map(todo => 
+      <TodoItem key={todo.id} todo={todo} 
+        toggleDone={toggleDone}
+        deleteTodo={deleteTodo}
+      />
+    )}
         
-      </Warning>  
-    </Warning>   
   </>);
 }
