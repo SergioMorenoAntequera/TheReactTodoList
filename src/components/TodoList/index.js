@@ -3,7 +3,7 @@ import { TodoItem } from '../TodoItem';
 import { TodoAdd } from '../TodoAdd';
 import { TodoCounter } from '../TodoCounter';
 import { TodoTextFilter } from '../TodoTextFilter';
-import { useLocalStorage } from '../../utils/Utils';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Warning } from '../Warning';
 import './style.css';
 
