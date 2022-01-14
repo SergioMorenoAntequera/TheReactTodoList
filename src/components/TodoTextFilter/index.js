@@ -1,15 +1,20 @@
 import './style.css';
+import { TodoContext } from '../TodoContext';
 
-export function TodoTextFilter({ setFilterText }) {
-
-  const filter = (e) => {
-    setFilterText(e.target.value) 
-  }
+export function TodoTextFilter() {
 
   return (<>
-    <form action="" style={{marginTop: "1em"}}>
-      <span> filtro de texto </span>
-      <input type="text" onChange={filter}/>
-    </form>   
+    <TodoContext.Consumer>
+      {({
+        setFilterText
+      }) => {
+        return(
+          <form action="" style={{marginTop: "1em"}}>
+            <span> filtro de texto </span>
+            <input type="text" onChange={(e)=>{setFilterText(e.target.value) }}/>
+          </form>   
+        )
+      }}
+    </TodoContext.Consumer>
   </>);
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { TodoContext } from '../TodoContext';
 import { Warning, check } from '../Warning';
 import './style.css';
 
@@ -14,7 +15,7 @@ export function TodoAdd({ addTodo }) {
     setNewTodo({...newTodo, done:e.target.checked});
   }
 
-  const submitTodo = () => {
+  const submitTodo = (addTodo) => {
     let newTodoAux = {...newTodo}
     var errorMessages = check([
       {condition: (newTodoAux.name.length === 0),
@@ -29,19 +30,22 @@ export function TodoAdd({ addTodo }) {
   }
 
   return (<>
-  
-    <form onSubmit={(event)=> {event.preventDefault()}} action="">
-      <input onKeyUp={updateName} type="text"/>
-      <input onChange={updateDone} type="checkbox"/>
-      <button type="submit" onClick={submitTodo}> Add </button>
-    </form>
-    
-    {
-      warningMessages.map((message, index) => {
-        return <Warning key={index} title={message}/>
-      })
-    }      
-    
-  
+    <TodoContext.Consumer>
+      {({addTodo})=>{
+        return (<>
+          <form onSubmit={(event)=> {event.preventDefault()}} action="">
+            <input onKeyUp={updateName} type="text"/>
+            <input onChange={updateDone} type="checkbox"/>
+            <button type="submit" onClick={()=>{submitTodo(addTodo)}}> Add </button>
+          </form>
+          
+          {
+            warningMessages.map((message, index) => {
+              return <Warning key={index} title={message}/>
+            })
+          } 
+        </>)
+      }}
+    </TodoContext.Consumer>
   </>);
 }

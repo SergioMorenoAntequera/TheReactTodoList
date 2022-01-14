@@ -4,44 +4,40 @@ import { TodoItem } from '../TodoItem';
 import { TodoAdd } from '../TodoAdd';
 import { TodoCounter } from '../TodoCounter';
 import { TodoTextFilter } from '../TodoTextFilter';
+import { TodoContext } from '../TodoContext';
 
 
-export function AppUI({ 
-    loading,
-    error,
-    todoList,
-    setTodoList,
-    filterText,
-    setFilterText,
-    addTodo,
-    deleteTodo,
-    toggleDone
-  }) {
+export function AppUI() {
   return (<>
   
-    <TodoAdd addTodo={addTodo}/>
+    <TodoAdd/>
     
-    <TodoCounter 
-      total={todoList.length} 
-      filtered={todoList.length} 
-      done={todoList.filter(it=>it.done).length}
-    />
+    <TodoCounter/>
 
-    <TodoTextFilter 
-      setFilterText={setFilterText} 
-    />
+    <TodoTextFilter/>
 
-    <TodoList>
-      {loading && !error && <p> We are loading you list froom the "API"</p>}
-      {!loading && todoList.length === 0 && <p> No te queda naica </p>}
-      {!loading && todoList.length === 0 && <p> No hemos encntrao naica </p>}
-
-      {todoList.map(todo => 
-        <TodoItem key={todo.id} todo={todo} 
-          toggleDone={toggleDone}
-          deleteTodo={deleteTodo}
-        />
-      )}
-    </TodoList> 
+    <TodoContext.Consumer>
+      {({
+        loading,
+        error,
+        todoListFiltered,
+        deleteTodo,
+        toggleDone,
+      }) => {
+        return <TodoList>
+          {loading && !error && <p> We are loading you list froom the "API"</p>}
+          {!loading && todoListFiltered.length === 0 && <p> No te queda naica </p>}
+          {!loading && todoListFiltered.length === 0 && <p> No hemos encntrao naica </p>}
+    
+          {todoListFiltered.map(todo => 
+            <TodoItem key={todo.id} todo={todo} 
+              toggleDone={toggleDone}
+              deleteTodo={deleteTodo}
+            />
+          )}
+        </TodoList> 
+      }}
+    </TodoContext.Consumer>
+    
   </>);
 }
