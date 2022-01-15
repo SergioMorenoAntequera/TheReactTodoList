@@ -3,12 +3,10 @@ import { useContext } from 'react';
 import { TodoList } from "../TodoList"
 import { TodoItem } from '../TodoItem';
 import { TodoAdd } from '../TodoAdd';
+import { TodoAddDialog } from '../TodoAddDialog';
 import { TodoCounter } from '../TodoCounter';
 import { TodoTextFilter } from '../TodoTextFilter';
 import { TodoContext } from '../TodoContext';
-
-import { Modal, ModalDialog } from '../Modal';
-
 
 export function AppUI() {
   const {
@@ -25,6 +23,11 @@ export function AppUI() {
   
     <TodoAdd/>
     
+    <button onClick={()=>{setShowingAddDialog(!showingAddDialog)}}>  
+      toggle 
+    </button>
+    <TodoAddDialog/>
+
     <TodoCounter/>
 
     <TodoTextFilter/>
@@ -42,23 +45,6 @@ export function AppUI() {
       )}
     </TodoList>
 
-    <button onClick={()=>{setShowingAddDialog(!showingAddDialog)}}>  
-      toggle 
-    </button>
-
-    <ModalDialog 
-      showing={showingAddDialog}
-      setShowing={setShowingAddDialog}
-      title="esto es un dialogo jaja"
-      body={"vaya cuerpo que tiene este dialogo"}
-      button1={{
-        action: ()=>{console.log('button1')},
-        text: "Primary Button"
-      }}
-      button2={{
-        action: ()=>{console.log('button2')},
-        text: "secondary button"
-      }}
-    />
+    
   </>);
 }
