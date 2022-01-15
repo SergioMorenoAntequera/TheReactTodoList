@@ -27,3 +27,8 @@
 .modal-dialog .header .x {
     cursor: pointer;
 }
+
+.closeIcon:hover {
+    transition: .1s;
+    fill: grey;
+}

@@ -1,6 +1,7 @@
 import "./style.css"
 import React from "react";
 import ReactDOM from "react-dom";
+import { FaTimes } from "react-icons/fa";
 
 export function Modal(props) {
     return (
@@ -55,7 +56,7 @@ export function CustomModalDialog({ children, setShowing, title }){
                 {!!title &&
                     <div className="header">
                         <h3> {title} </h3>
-                        <span className="x" onClick={()=>{setShowing(false)}}> x </span>
+                        <span className="x" onClick={()=>{setShowing(false)}}> <FaTimes className="closeIcon"/> </span>
                     </div>
                 }
                 
