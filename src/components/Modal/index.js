@@ -42,7 +42,7 @@ export function ModalDialog({
     </Modal>);
 }
 
-export function CustomModalDialog({ children, setShowing }){
+export function CustomModalDialog({ children, setShowing, title }){
 
     function hideIfClickedOut(event) {
         if(event.target.matches(".modal-dialog-container"))
@@ -52,6 +52,13 @@ export function CustomModalDialog({ children, setShowing }){
     return(<Modal>
         <div className="modal-dialog-container" onClick={hideIfClickedOut}>
             <div className="modal-dialog">
+                {!!title &&
+                    <div className="header">
+                        <h3> {title} </h3>
+                        <span className="x" onClick={()=>{setShowing(false)}}> x </span>
+                    </div>
+                }
+                
                 { children }
             </div>
         </div>

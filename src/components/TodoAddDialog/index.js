@@ -15,9 +15,6 @@ export function TodoAddDialog() {
     const updateName = (e) => {
         setNewTodo({...newTodo, name:e.target.value});
     }
-    const updateDone = (e) => {
-        setNewTodo({...newTodo, done:e.target.checked});
-    }
     
     function onSubmit(event) {
         event.preventDefault()
@@ -30,8 +27,11 @@ export function TodoAddDialog() {
             errorMessage: "No ffensie word pls, my uncle and my mom sleep together"},
         {condition: (newTodoAux.name === "pra"),
             errorMessage: "I wonder whoa re you"}
-        ], () => {addTodo(newTodoAux)}
-        )
+        ], () => {
+            addTodo(newTodoAux)
+            setNewTodo({...newTodo, name:""})
+        })
+
         setWarningMessages(errorMessages);
     }
 
@@ -44,9 +44,10 @@ export function TodoAddDialog() {
     
     if(!showingAddDialog) return(<></>)
     return(
-        <CustomModalDialog setVisible={setShowingAddDialog}>
+        <CustomModalDialog setShowing={setShowingAddDialog} title={"Add a new Todo to do"}>
             <form onSubmit={onSubmit}>
                 <input onChange={updateName} 
+                        value={newTodo.name}
                         type="text" ref={textInputRef}
                         placeholder="Learn React basics..."
                 />
