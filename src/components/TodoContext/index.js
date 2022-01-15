@@ -13,6 +13,7 @@ function TodoProvider(props) {
     } = useLocalStorage("TODOS_V1", [])
 
     const [filterText, setFilterText] = useState("")
+    const [showingAddDialog, setShowingAddDialog] = useState(false)
 
     const filterList = (textToCompare, listToCompare) => {
         textToCompare = textToCompare ?? filterText;
@@ -60,6 +61,8 @@ function TodoProvider(props) {
             addTodo,
             deleteTodo,
             toggleDone,
+            showingAddDialog,
+            setShowingAddDialog
         }}>
             {props.children}
         </TodoContext.Provider>    

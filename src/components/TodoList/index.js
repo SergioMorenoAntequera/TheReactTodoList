@@ -1,8 +1,8 @@
 import './style.css';
 
-export function TodoList(props) {
+export function TodoList({children}) {
 
   return (<ul>
-    {props.children}    
+    {children}    
   </ul>);
 }
