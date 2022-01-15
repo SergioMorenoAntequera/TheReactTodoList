@@ -1,7 +1,6 @@
 import "./style.css"
 import React from "react";
 import ReactDOM from "react-dom";
-import { TodoAdd } from "../TodoAdd";
 
 export function Modal(props) {
     return (
@@ -21,10 +20,6 @@ export function ModalDialog({
         button1, 
         button2
     }) { 
-
-    function hide() {
-        setShowing(false)
-    }
  
     if(!showing) return<></>
 
@@ -33,9 +28,9 @@ export function ModalDialog({
             <div className="modal-dialog">
                 <div className="header">
                     <h3> {title} </h3>
-                    <span className="x" onClick={hide}> x </span>
+                    <span className="x" onClick={()=>{setShowing(false)}}> x </span>
                 </div>
-                <TodoAdd></TodoAdd>
+
                 <p> {body} </p>
 
                 <div>
@@ -45,4 +40,20 @@ export function ModalDialog({
             </div>
         </div>
     </Modal>);
+}
+
+export function CustomModalDialog({ children, setShowing }){
+
+    function hideIfClickedOut(event) {
+        if(event.target.matches(".modal-dialog-container"))
+            if(setShowing) setShowing(false)
+    }
+
+    return(<Modal>
+        <div className="modal-dialog-container" onClick={hideIfClickedOut}>
+            <div className="modal-dialog">
+                { children }
+            </div>
+        </div>
+    </Modal>)
 }

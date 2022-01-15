@@ -2,7 +2,6 @@ import './style.css';
 import { useContext } from 'react';
 import { TodoList } from "../TodoList"
 import { TodoItem } from '../TodoItem';
-import { TodoAdd } from '../TodoAdd';
 import { TodoAddDialog } from '../TodoAddDialog';
 import { TodoCounter } from '../TodoCounter';
 import { TodoTextFilter } from '../TodoTextFilter';
@@ -15,18 +14,16 @@ export function AppUI() {
     todoListFiltered,
     deleteTodo,
     toggleDone,
-    showingAddDialog,
     setShowingAddDialog
   } = useContext(TodoContext) 
 
   return (<>
   
-    <TodoAdd/>
-    
-    <button onClick={()=>{setShowingAddDialog(!showingAddDialog)}}>  
-      toggle 
+    <button style={{zIndex:3}} onClick={()=>{setShowingAddDialog(prev=>!prev)}}>  
+      Add New Todo 
     </button>
     <TodoAddDialog/>
+
 
     <TodoCounter/>
 
