@@ -1,3 +1,16 @@
+
+body {
+    width: 100%;
+}
+#root{
+    margin-top: 2em;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    justify-content: center;
+    grid-template-columns: minmax(100px, 500px);
+}
+
 input[type="text"] {
     border: none;
     border-bottom: solid 2px black;

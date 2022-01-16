@@ -5,12 +5,22 @@ const TodoContext = React.createContext();
 
 function TodoProvider(props) {
 
+    const defTodos = [
+        {id:1, name:"📚 Features implemented:", done:false},
+        {id:2, name:"✨ React Hooks", done:true},
+        {id:3, name:"🔮 React Custom Hooks", done:true},
+        {id:4, name:"👉 React Refferences", done:true},
+        {id:5, name:"🚀 React Portals", done:true},
+        {id:6, name:"📝 React Context", done:true},
+        {id:7, name:"💖 Hope you love it", done:false},
+    ]
+
     const {
         storageItem: todoList, 
         setLocalElement: setTodoList, 
         loading,
         error
-    } = useLocalStorage("TODOS_V1", [])
+    } = useLocalStorage("TODOS_V1", defTodos)
 
     const [filterText, setFilterText] = useState("")
     const [showingAddDialog, setShowingAddDialog] = useState(false)

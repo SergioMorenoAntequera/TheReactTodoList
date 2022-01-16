@@ -4,13 +4,20 @@ import { TodoContext } from '../TodoContext';
 
 export function TodoCounter() {
   
-  const {todoList, todoListFiltered} = useContext(TodoContext)
+  const {todoList, todoListFiltered, loading} = useContext(TodoContext)
   let filtered = todoListFiltered.length
   let done = todoList.filter(it=>it.done).length
   let total = todoList.length
 
-  return (<div className='TodoCounter'>
-    <p className='main'> {done} / {total} </p>
+  let celeb = total != 0 && done===total && !loading
+
+  return (<div className={`TodoCounter ${celeb? 'celeb' : ''}`}>
+    <p className={`main ${celeb? 'celeb' : ''}`}> 
+    
+      <span> 🎉</span>  
+       {done} / {total} 
+      <span> 🎉</span>  
+    </p>
     
     {filtered !== total && 
       <p> Showing {filtered} </p>

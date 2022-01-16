@@ -1,5 +1,7 @@
 .AppUI {
     padding: 2em;
+    position: relative;
+    width: 100%;
 }
 
 h1.title {

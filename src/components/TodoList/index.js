@@ -10,7 +10,7 @@ export function TodoList({children}) {
   if(error) return ( <TodoError/> )
   if(!loading && todoListFiltered.length === 0) return ( <TodoNotFound/> )
 
-  return (<ul>
+  return (<ul className='TodoList'>
     {children}    
   </ul>);
 }

@@ -7,7 +7,16 @@
     height: 2em;
     margin-bottom: 10px;
 }
+.TodoCounter.celeb {
+    border-color: #005eff;
+    background-color: #005eff;
+}
 
 .TodoCounter .main {
     font-weight: bold;
 }
+.TodoCounter .main span {display: none; margin: 0 1em;}
+.TodoCounter .main.celeb {
+    color: white;
+}
+.TodoCounter .main.celeb span {display: inline-block;}
