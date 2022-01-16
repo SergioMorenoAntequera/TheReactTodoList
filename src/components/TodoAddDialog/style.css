@@ -1,0 +1,46 @@
+.TodoAddDialog .label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.TodoAddDialog input{
+    margin-bottom: .5em;
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+.TodoAddDialog .ctas {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 5px;
+}
+
+.TodoAddDialog .ctas button {
+    background-color: white;
+    border: none;
+    padding: 1em;
+    border-radius: 4px;
+    transition: .1s;
+    cursor: pointer;
+    
+}
+
+.TodoAddDialog .ctas button.primary:hover {
+    background-color: rgb(36, 36, 36);
+}
+.TodoAddDialog .ctas button.primary {
+    display: grid;
+    place-items: center;
+    grid-template-columns: auto 1fr;
+    background-color: black;
+    color: white;
+    gap: 5px;
+}
+
+.TodoAddDialog .ctas button.secondary {
+    margin-right: 10px;
+}
+.TodoAddDialog .ctas button.secondary:hover {
+    background-color: rgb(212, 212, 212);
+}

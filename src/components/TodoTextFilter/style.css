@@ -6,11 +6,5 @@
     cursor: pointer;
 }
 .TodoTextFilter input {
-    border: none;
-    border-bottom: solid 1px black;
     margin-left: 5px;
-    width: 6em;
-    cursor: pointer;
-}
-.TodoTextFilter input:focus {outline: none;
 }

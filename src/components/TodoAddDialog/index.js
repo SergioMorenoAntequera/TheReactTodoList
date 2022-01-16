@@ -1,7 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
+import "./style.css"
 import { TodoContext } from "../TodoContext";
 import { CustomModalDialog } from '../Modal';
 import { Warning, check } from '../Warning';
+import { FaPlus } from "react-icons/fa";
 
 export function TodoAddDialog() {
     const [newTodo, setNewTodo] = useState({id:-1, name:"", done:false})
@@ -22,9 +24,9 @@ export function TodoAddDialog() {
         let newTodoAux = {...newTodo}
         var errorMessages = check([
         {condition: (newTodoAux.name.length === 0),
-            errorMessage: "You must introduce a name to your TODO to add it"},
-        {condition: (newTodoAux.name === "dick"),
-            errorMessage: "No ffensie word pls, my uncle and my mom sleep together"},
+            errorMessage: "A name is required."},
+        // {condition: (newTodoAux.name === "dick"),
+        //     errorMessage: "No ffensie word pls, my uncle and my mom sleep together"},
         {condition: (newTodoAux.name === "pra"),
             errorMessage: "I wonder whoa re you"}
         ], () => {
@@ -45,22 +47,26 @@ export function TodoAddDialog() {
     if(!showingAddDialog) return(<></>)
     return(
         <CustomModalDialog setShowing={setShowingAddDialog} title={"Add a new Todo to do"}>
-            <form onSubmit={onSubmit}>
+            <form className="TodoAddDialog" onSubmit={onSubmit}>
+                <p className="label"> Name </p>
                 <input onChange={updateName} 
                         value={newTodo.name}
                         type="text" ref={textInputRef}
                         placeholder="Learn React basics..."
                 />
 
-                <div>
-                    <button type="button" onClick={()=>{setShowingAddDialog(false)}}>cancela</button>
-                    <button type="submit"> dale caña</button>
+                {warningMessages.map((message, index) => {
+                    return <Warning key={index} title={message}/>
+                })} 
+
+                <div className="ctas">
+                    <button className="secondary" type="button" onClick={()=>{setShowingAddDialog(false)}}>Cancel</button>
+                    <button className="primary" type="submit"> 
+                        <FaPlus/> 
+                        <div> Add </div>
+                    </button>
                 </div>
             </form>
-
-            {warningMessages.map((message, index) => {
-                return <Warning key={index} title={message}/>
-            })} 
         </CustomModalDialog>
     )
 }
