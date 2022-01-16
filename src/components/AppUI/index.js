@@ -6,6 +6,7 @@ import { TodoAddDialog } from '../TodoAddDialog';
 import { TodoCounter } from '../TodoCounter';
 import { TodoTextFilter } from '../TodoTextFilter';
 import { TodoContext } from '../TodoContext';
+import { FaPlus } from 'react-icons/fa';
 
 export function AppUI() {
   const {
@@ -14,6 +15,7 @@ export function AppUI() {
     todoListFiltered,
     deleteTodo,
     toggleDone,
+    showingAddDialog,
     setShowingAddDialog
   } = useContext(TodoContext) 
 
@@ -34,8 +36,9 @@ export function AppUI() {
       )}
     </TodoList>
 
-    <button style={{zIndex:3}} onClick={()=>{setShowingAddDialog(prev=>!prev)}}>  
-      Add New Todo 
+    <button className={`AddNewTodo ${showingAddDialog ? 'open':''}`} 
+            onClick={()=>{setShowingAddDialog(prev=>!prev)}}>  
+      <FaPlus/>
     </button>
     <TodoAddDialog/>
 

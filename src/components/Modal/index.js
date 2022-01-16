@@ -51,7 +51,7 @@ export function CustomModalDialog({ children, setShowing, title }){
     }
 
     return(<Modal>
-        <div className="modal-dialog-container" onClick={hideIfClickedOut}>
+        <div className="Modal modal-dialog-container" onClick={hideIfClickedOut}>
             <div className="modal-dialog">
                 {!!title &&
                     <div className="header">
@@ -59,8 +59,9 @@ export function CustomModalDialog({ children, setShowing, title }){
                         <span className="x" onClick={()=>{setShowing(false)}}> <FaTimes className="closeIcon"/> </span>
                     </div>
                 }
-                
-                { children }
+                <div className="body">
+                    { children }
+                </div>
             </div>
         </div>
     </Modal>)

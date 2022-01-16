@@ -8,7 +8,7 @@ export function TodoTextFilter() {
   const inputRef = useRef()
 
   return (<>
-    <form className='TodoTextFilter' action="" style={{marginTop: "1em"}}>
+    <form className='TodoTextFilter' onSubmit={(e)=>{e.preventDefault()}} action="">
       <input type="text" ref={inputRef} onChange={(e)=>{setFilterText(e.target.value) }}/>
       <FaSearch className='' onClick={()=>{inputRef.current.select()}}/>
     </form>   

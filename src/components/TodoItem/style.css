@@ -12,9 +12,11 @@
 .TodoItem .LeftPart input[type="checkbox"]{
     margin-right: 1em;
 }
-.TodoItem .LeftPart input[type="checkbox"]:checked {
+.TodoItem .deleteIcon { color: rgb(43, 43, 43); }
+.TodoItem .deleteIcon:hover { color:black; }
+/* .TodoItem .LeftPart input[type="checkbox"]:checked {
     background-color: black !important;
-}
+} */
 
 .TodoItem:hover{
     background-color: rgb(243, 243, 243);
@@ -30,8 +32,7 @@
     opacity: .1;
     z-index: 1;
 }
-.TodoItem.done {
-    background-color: rgb(243, 243, 243);
+.TodoItem.done .LeftPart {
     opacity: .6;
 }
 .TodoItem.done .LeftPart p {
