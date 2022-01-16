@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./style.css"
+import { TodoContext } from '../TodoContext'
+import { FaPlus } from 'react-icons/fa'
 
 
 function TodoLoading() {
@@ -27,8 +29,18 @@ function TodoError() {
 }
 
 function TodoNotFound() {
+    const {
+        showingAddDialog,
+        setShowingAddDialog
+      } = useContext(TodoContext) 
+
     return(<div className='TodoNotFound'>
-        <p> No hemos encntrao naica </p>
+        <h2 className='title'> No Todo's found </h2>
+        <p className='sub-title'> Nothing to worry about, we can fix this </p>
+        <button className='primary'
+            onClick={()=>{setShowingAddDialog(prev=>!prev)}}>  
+            <FaPlus/> Add one now
+        </button>
     </div>)
 }
 
