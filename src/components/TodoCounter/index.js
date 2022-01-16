@@ -9,7 +9,12 @@ export function TodoCounter() {
   let done = todoList.filter(it=>it.done).length
   let total = todoList.length
 
-  return (
-    <p> Visibles {filtered} / {total} and done  {done} todos</p>
-  )
+  return (<div className='TodoCounter'>
+    <p className='main'> {done} / {total} </p>
+    
+    {filtered !== total && 
+      <p> Showing {filtered} </p>
+    }
+    
+  </div>)
 }

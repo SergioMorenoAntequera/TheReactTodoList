@@ -1,10 +1,40 @@
-.todo-item {
+.TodoItem {
     padding: 1em;
     border-radius: 4px;
-    background-color: #f0f0f0;
-    margin: 1em;    
+    display: grid;
+    grid-template-columns: 1fr auto;
+    cursor: pointer;
+    position: relative;
 }
-.todo-item.done {
-    background-color: silver;
-    color: white;        
+.TodoItem .LeftPart {
+    display: flex;
 }
+.TodoItem .LeftPart input[type="checkbox"]{
+    margin-right: 1em;
+}
+.TodoItem .LeftPart input[type="checkbox"]:checked {
+    background-color: black !important;
+}
+
+.TodoItem:hover{
+    background-color: rgb(243, 243, 243);
+}
+.TodoItem:not(:last-child):after {
+    content: "";
+    position: absolute;
+    left: 50%; top: calc(100%);
+    transform: translate(-50%);
+
+    width: 50%; height: 1px;
+    background-color: #a1a1a1;
+    opacity: .1;
+    z-index: 1;
+}
+.TodoItem.done {
+    background-color: rgb(243, 243, 243);
+    opacity: .6;
+}
+.TodoItem.done .LeftPart p {
+    text-decoration: line-through;
+}
+

@@ -1,15 +1,16 @@
 import './style.css';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { TodoContext } from '../TodoContext';
+import { FaSearch } from 'react-icons/fa';
 
 export function TodoTextFilter() {
-
   const { setFilterText } = useContext(TodoContext)
+  const inputRef = useRef()
 
   return (<>
-    <form action="" style={{marginTop: "1em"}}>
-      <span> filtro de texto </span>
-      <input type="text" onChange={(e)=>{setFilterText(e.target.value) }}/>
+    <form className='TodoTextFilter' action="" style={{marginTop: "1em"}}>
+      <input type="text" ref={inputRef} onChange={(e)=>{setFilterText(e.target.value) }}/>
+      <FaSearch className='' onClick={()=>{inputRef.current.select()}}/>
     </form>   
   </>);
 }

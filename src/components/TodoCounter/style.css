@@ -1,0 +1,13 @@
+.TodoCounter {
+    display: grid;
+    place-items: center;
+    border: solid 1px black;
+    padding: .6em;
+    border-radius: 4px;
+    height: 2em;
+    margin-bottom: 10px;
+}
+
+.TodoCounter .main {
+    font-weight: bold;
+}
