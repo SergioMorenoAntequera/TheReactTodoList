@@ -28,11 +28,7 @@ function TodoError() {
     </div>)
 }
 
-function TodoNotFound() {
-    const {
-        showingAddDialog,
-        setShowingAddDialog
-      } = useContext(TodoContext) 
+function TodoNotFound({setShowingAddDialog}) {
 
     return(<div className='TodoNotFound'>
         <h2 className='title'> No Todo's found </h2>

@@ -2,9 +2,7 @@ import './style.css';
 import { useContext } from 'react';
 import { TodoContext } from '../TodoContext';
 
-export function TodoCounter() {
-  
-  const {todoList, todoListFiltered, loading} = useContext(TodoContext)
+export function TodoCounter( {todoList, todoListFiltered, loading} ) {
   let filtered = todoListFiltered.length
   let done = todoList.filter(it=>it.done).length
   let total = todoList.length
@@ -13,7 +11,6 @@ export function TodoCounter() {
 
   return (<div className={`TodoCounter ${celeb? 'celeb' : ''}`}>
     <p className={`main ${celeb? 'celeb' : ''}`}> 
-    
       <span> 🎉</span>  
        {done} / {total} 
       <span> 🎉</span>  

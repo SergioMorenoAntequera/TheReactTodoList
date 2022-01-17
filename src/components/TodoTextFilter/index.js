@@ -3,8 +3,7 @@ import { useContext, useRef } from 'react';
 import { TodoContext } from '../TodoContext';
 import { FaSearch } from 'react-icons/fa';
 
-export function TodoTextFilter() {
-  const { setFilterText } = useContext(TodoContext)
+export function TodoTextFilter( { setFilterText }) {
   const inputRef = useRef()
 
   return (<>
