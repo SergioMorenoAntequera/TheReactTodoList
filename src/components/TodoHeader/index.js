@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TodoHeader({children}) {
+export function TodoHeader({children}) {
     return (<header>
         {children}
     </header>)

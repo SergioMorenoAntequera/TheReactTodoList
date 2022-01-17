@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
-const TodoContext = React.createContext();
-
-function TodoProvider(props) {
+function useTodos() {
 
     const defTodos = [
-        {id:1, name:"📚 Features implemented:", done:false},
-        {id:2, name:"✨ React Hooks", done:true},
-        {id:3, name:"🔮 React Custom Hooks", done:true},
-        {id:4, name:"👉 React Refferences", done:true},
-        {id:5, name:"🚀 React Portals", done:true},
-        {id:6, name:"📝 React Context", done:true},
-        {id:7, name:"💖 Hope you love it", done:false},
+        {id:1, name:"📚 Features implemented:", done:true},
+        {id:2, name:"✨ React Hooks", done:false},
+        {id:3, name:"🔮 React Custom Hooks", done:false},
+        {id:4, name:"👉 React Refferences", done:false},
+        {id:5, name:"🚀 React Portals", done:false},
+        {id:6, name:"📝 React Context", done:false},
+        {id:7, name:"📒 Local Storage", done:false},
+        {id:8, name:"💖 Hope you love it", done:false},
     ]
 
     const {
@@ -59,24 +58,18 @@ function TodoProvider(props) {
         setTodoList(auxTodos);
     }
 
-    return (
-        <TodoContext.Provider value={{
-            loading,
-            error,
-            todoList,
-            todoListFiltered,
-            setTodoList,
-            filterText,
-            setFilterText,
-            addTodo,
-            deleteTodo,
-            toggleDone,
-            showingAddDialog,
-            setShowingAddDialog
-        }}>
-            {props.children}
-        </TodoContext.Provider>    
-    )
+    return {
+        todoList,
+        addTodo,
+        deleteTodo,
+        toggleDone,
+        setFilterText,
+        todoListFiltered,
+        setShowingAddDialog,
+        showingAddDialog,
+        loading, 
+        error,
+    }
 }
 
-export {TodoContext, TodoProvider}
+export {useTodos}

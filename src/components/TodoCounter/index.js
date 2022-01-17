@@ -1,6 +1,4 @@
 import './style.css';
-import { useContext } from 'react';
-import { TodoContext } from '../TodoContext';
 
 export function TodoCounter( {todoList, todoListFiltered, loading} ) {
   let filtered = todoListFiltered.length

@@ -12,37 +12,6 @@ export function Modal(props) {
     )
 }
 
-// Multi Purpose Dialog
-export function ModalDialog({
-        showing, 
-        setShowing, 
-        title, 
-        body, 
-        button1, 
-        button2
-    }) { 
- 
-    if(!showing) return<></>
-
-    return(<Modal>
-        <div className="modal-dialog-container">
-            <div className="modal-dialog">
-                <div className="header">
-                    <h3> {title} </h3>
-                    <span className="x" onClick={()=>{setShowing(false)}}> x </span>
-                </div>
-
-                <p> {body} </p>
-
-                <div>
-                    {button2 && <button onClick={button2.action}> {button2.text} </button>}
-                    {button1 && <button onClick={button1.action}> {button1.text} </button>}
-                </div>
-            </div>
-        </div>
-    </Modal>);
-}
-
 export function CustomModalDialog({ children, setShowing, title }){
 
     function hideIfClickedOut(event) {

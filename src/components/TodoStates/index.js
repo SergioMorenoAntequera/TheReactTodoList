@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import "./style.css"
-import { TodoContext } from '../TodoContext'
 import { FaPlus } from 'react-icons/fa'
 
 

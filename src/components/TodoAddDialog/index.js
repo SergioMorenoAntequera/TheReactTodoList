@@ -1,18 +1,17 @@
 import React, {useContext, useEffect, useState} from "react";
 import "./style.css"
-import { TodoContext } from "../TodoContext";
 import { CustomModalDialog } from '../Modal';
 import { Warning, check } from '../Warning';
 import { FaPlus } from "react-icons/fa";
 
-export function TodoAddDialog() {
+export function TodoAddDialog({
+    addTodo,
+    showingAddDialog, 
+    setShowingAddDialog
+}) {
     const [newTodo, setNewTodo] = useState({id:-1, name:"", done:false})
     const [warningMessages, setWarningMessages] = useState([])
     const textInputRef = React.createRef();
-    const { addTodo,
-            showingAddDialog, 
-            setShowingAddDialog 
-    } = useContext(TodoContext)
         
     const updateName = (e) => {
         setNewTodo({...newTodo, name:e.target.value});
