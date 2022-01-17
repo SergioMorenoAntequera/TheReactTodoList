@@ -32,7 +32,8 @@ export function TodoAddDialog({
             addTodo(newTodoAux)
             setNewTodo({...newTodo, name:""})
         })
-
+        
+        textInputRef?.current?.select()
         setWarningMessages(errorMessages);
     }
 

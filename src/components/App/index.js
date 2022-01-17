@@ -41,21 +41,19 @@ export function App() {
       />
     </TodoHeader>
     
-
-    <TodoList>
-      { error && <TodoError/> }
-      { loading && <TodoLoading/> }
-      { !loading && todoListFiltered.length === 0 && 
-        <TodoNotFound setShowingAddDialog={setShowingAddDialog}/> 
-      }
-      
-      {todoListFiltered.map(todo => 
+    <TodoList
+      error = {error}
+      loading = {loading}
+      todoList = {todoListFiltered}
+      onError = {()=><TodoError/>}
+      onLoading = {()=><TodoLoading/>}
+      onEmpty = {() => <TodoNotFound setShowingAddDialog={setShowingAddDialog}/>}
+      render = {(todo)=>
         <TodoItem key={todo.id} todo={todo} 
           toggleDone={toggleDone}
           deleteTodo={deleteTodo}
-        />
-      )}
-    </TodoList>
+      />}
+    />
 
     <button className={`AddNewTodo ${showingAddDialog ? 'open':''}`} 
             onClick={()=>{setShowingAddDialog(prev=>!prev)}}>  
