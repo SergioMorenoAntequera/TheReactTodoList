@@ -45,16 +45,16 @@
 }
 
 
-.TodoNotFound {
+.TodoNotFound, .TodoEmptySearch {
     display: grid;
     place-items: center;
     margin-top: 3em;
 }
-.TodoNotFound .title{
+.TodoNotFound .title, .TodoEmptySearch .title{
     font-weight: bold;
     font-size: 1.3rem;
 }
-.TodoNotFound .primary{
+.TodoNotFound .primary, .TodoEmptySearch .primary{
     margin-top: 1em;
 }
 

@@ -63,6 +63,7 @@ function useTodos() {
         addTodo,
         deleteTodo,
         toggleDone,
+        filterText,
         setFilterText,
         todoListFiltered,
         setShowingAddDialog,

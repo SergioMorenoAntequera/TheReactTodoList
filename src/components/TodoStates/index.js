@@ -39,4 +39,12 @@ function TodoNotFound({setShowingAddDialog}) {
     </div>)
 }
 
-export {TodoLoading, TodoError, TodoNotFound}
+function TodoEmptySearch({text}) {
+    return (<div className='TodoEmptySearch'>
+        <h2 className='title'> No Todo's found </h2>
+        <p className='sub-title'> We couln't find Todo's that contained </p>
+        <p className='sub-title'> "{text}" in their name </p>
+    </div>)
+}
+
+export {TodoLoading, TodoError, TodoNotFound, TodoEmptySearch}

@@ -1,5 +1,5 @@
 import './style.css';
-import { TodoLoading, TodoError, TodoNotFound } from '../TodoStates';
+import { TodoLoading, TodoError, TodoNotFound, TodoEmptySearch } from '../TodoStates';
 import { TodoList } from "../TodoList"
 import { TodoItem } from '../TodoItem';
 import { TodoAddDialog } from '../TodoAddDialog';
@@ -17,6 +17,7 @@ export function App() {
     addTodo,
     deleteTodo,
     toggleDone,
+    filterText,
     setFilterText,
     todoListFiltered,
     setShowingAddDialog,
@@ -44,16 +45,20 @@ export function App() {
     <TodoList
       error = {error}
       loading = {loading}
-      todoList = {todoListFiltered}
+      todoList = {todoList}
+      todoListFiltered = {todoListFiltered}
+      filterText = {filterText}
       onError = {()=><TodoError/>}
       onLoading = {()=><TodoLoading/>}
-      onEmpty = {() => <TodoNotFound setShowingAddDialog={setShowingAddDialog}/>}
-      render = {(todo)=>
+      onEmpty = {() => <TodoNotFound setShowingAddDialog={setShowingAddDialog}/> }
+      onEmptySearch = {(text) => <TodoEmptySearch text={text}/> } 
+    >
+      {(todo)=>
         <TodoItem key={todo.id} todo={todo} 
           toggleDone={toggleDone}
           deleteTodo={deleteTodo}
       />}
-    />
+    </TodoList>
 
     <button className={`AddNewTodo ${showingAddDialog ? 'open':''}`} 
             onClick={()=>{setShowingAddDialog(prev=>!prev)}}>  
