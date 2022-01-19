@@ -31,14 +31,14 @@ export function App() {
     <h1 className='title'> The React <br/> Todo List </h1>
     <p className='subTitle'> If you don't do a Todo List, <br/> do you even React bro? </p>
 
-    <TodoHeader>
+    <TodoHeader loading={loading}>
       <TodoTextFilter 
         setFilterText={setFilterText}
       />
+
       <TodoCounter  
         todoList={todoList} 
-        todoListFiltered={todoListFiltered} 
-        loading={loading}
+        todoListFiltered={todoListFiltered}
       />
     </TodoHeader>
     

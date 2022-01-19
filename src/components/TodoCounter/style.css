@@ -15,8 +15,7 @@
 .TodoCounter .main {
     font-weight: bold;
 }
-.TodoCounter .main span {display: none; margin: 0 1em;}
+.TodoCounter .main span {margin: 0 1em;}
 .TodoCounter .main.celeb {
     color: white;
 }
-.TodoCounter .main.celeb span {display: inline-block;}
