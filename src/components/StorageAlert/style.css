@@ -1,0 +1,14 @@
+
+.StorageAlert {
+    z-index: 3;
+}
+.StorageAlert .modal-dialog {
+    max-width: 8em;
+}
+.StorageAlert .bold {
+    font-weight: bold;
+    margin-bottom: .5em;
+}
+.StorageAlert .ctas {
+    margin-top: 1em;
+}

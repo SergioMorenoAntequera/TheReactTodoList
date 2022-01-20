@@ -12,7 +12,8 @@ export function Modal(props) {
     )
 }
 
-export function CustomModalDialog({ children, setShowing, title }){
+export function CustomModalDialog({ children, setShowing, title, customClasses }){
+    customClasses = customClasses ?? ""
 
     function hideIfClickedOut(event) {
         if(event.target.matches(".modal-dialog-container"))
@@ -20,7 +21,7 @@ export function CustomModalDialog({ children, setShowing, title }){
     }
 
     return(<Modal>
-        <div className="Modal modal-dialog-container" onClick={hideIfClickedOut}>
+        <div className={`Modal modal-dialog-container ${customClasses}`} onClick={hideIfClickedOut}>
             <div className="modal-dialog">
                 {!!title &&
                     <div className="header">
