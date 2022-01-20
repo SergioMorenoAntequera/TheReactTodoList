@@ -11,4 +11,5 @@
 }
 .StorageAlert .ctas {
     margin-top: 1em;
+    justify-content: start;
 }

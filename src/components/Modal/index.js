@@ -12,10 +12,12 @@ export function Modal(props) {
     )
 }
 
-export function CustomModalDialog({ children, setShowing, title, customClasses }){
+export function CustomModalDialog({ children, setShowing, title, customClasses, modal }){
     customClasses = customClasses ?? ""
+    modal = modal ?? false
 
     function hideIfClickedOut(event) {
+        if(modal) return;
         if(event.target.matches(".modal-dialog-container"))
             if(setShowing) setShowing(false)
     }
@@ -26,7 +28,9 @@ export function CustomModalDialog({ children, setShowing, title, customClasses }
                 {!!title &&
                     <div className="header">
                         <h3> {title} </h3>
-                        <span className="x" onClick={()=>{setShowing(false)}}> <FaTimes className="closeIcon"/> </span>
+                        {!modal && 
+                            <span className="x" onClick={()=>{setShowing(false)}}> <FaTimes className="closeIcon"/> </span>
+                        }
                     </div>
                 }
                 <div className="body">

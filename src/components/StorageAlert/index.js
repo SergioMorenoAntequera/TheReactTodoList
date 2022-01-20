@@ -1,16 +1,17 @@
 import React from 'react';
 import "./style.css"
 import { CustomModalDialog } from '../Modal';
-import withStorageListener from './withStorageListener';
+import useStorageListener from './useStorageListener';
 
-function StorageAlert({change, setChange, setSynchronized}) {
+function StorageAlert({storageKey, setSynchronized}) {
+    const [change, setChange] = useStorageListener(storageKey)
 
     if(!change) return <></>
-    
     return (<CustomModalDialog 
         customClasses="StorageAlert" 
         setShowing={setChange}
-        title="Changes detected">
+        title="Changes detected"
+        modal={true}>
         
 
         <p className='bold'>
@@ -19,7 +20,6 @@ function StorageAlert({change, setChange, setSynchronized}) {
         <p> We have detected changes made in the todo app in another instance of it. </p>
         
         <div className="ctas">
-            <button className="secondary" type="button" onClick={()=>{setChange(false)}}>Cancel</button>
             <button className="primary" type="button" 
                 onClick={()=> {
                     setSynchronized(false);
@@ -34,5 +34,4 @@ function StorageAlert({change, setChange, setSynchronized}) {
     );
 }
 
-const StorageAlertWithStorageListener = withStorageListener(StorageAlert)
-export { StorageAlertWithStorageListener }
+export { StorageAlert }

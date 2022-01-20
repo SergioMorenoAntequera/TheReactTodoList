@@ -8,7 +8,7 @@ import { TodoTextFilter } from '../TodoTextFilter';
 import { FaPlus } from 'react-icons/fa';
 import { TodoHeader } from '../TodoHeader';
 import { useTodos } from './useTodos';
-import { StorageAlertWithStorageListener } from '../StorageAlert';
+import { StorageAlert } from '../StorageAlert';
 
 export function App() {
   
@@ -71,7 +71,6 @@ export function App() {
       setShowingAddDialog={setShowingAddDialog}
     />
 
-    <StorageAlertWithStorageListener storageKey={"TODOS_V1"} setSynchronized={setSynchronized}/>
-    
+    <StorageAlert storageKey={"TODOS_V1"} setSynchronized={setSynchronized}/>
   </div>);
 }
