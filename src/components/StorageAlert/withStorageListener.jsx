@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useState } from 'react/cjs/react.development';
 
 export default function withStorageListener(WrappedComponent) {
-    return function WrappedComponentWithStorageListener({key, onDetected}) {
+    return function WrappedComponentWithStorageListener({storageKey, setSynchronized}) {
         const [change, setChange] = useState(null)
 
         window.addEventListener("storage", (event) => {
-            if(event.key != key) return; 
+            if(event.key != storageKey) return; 
             setChange(event.newValue);
         })
 
@@ -14,7 +14,7 @@ export default function withStorageListener(WrappedComponent) {
             <WrappedComponent 
                 change={change}
                 setChange={setChange}
-                update={onDetected}
+                setSynchronized={setSynchronized}
             />
         </>
     }

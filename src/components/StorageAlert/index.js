@@ -1,14 +1,15 @@
 import React from 'react';
 import withStorageListener from './withStorageListener';
 
-function StorageAlert({change, setChange, update}) {
+function StorageAlert({change, setChange, setSynchronized}) {
     if(!change) return <></>
     return (<>
         <p>Hemos detectado cambios en otra ventana</p>
         <button onClick={()=>{
-                update(JSON.parse(change));
+                console.log(setSynchronized);
+                setSynchronized(false);
                 setChange(null)
-            }}>
+            }}> 
             OK 
         </button>
     </>);

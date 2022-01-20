@@ -17,6 +17,7 @@ function useTodos() {
     const {
         storageItem: todoList, 
         setLocalElement: setTodoList, 
+        auxSetSynchronized: setSynchronized,
         loading,
         error
     } = useLocalStorage("TODOS_V1", defTodos)
@@ -61,6 +62,7 @@ function useTodos() {
     return {
         todoList,
         setTodoList,
+        setSynchronized,
         addTodo,
         deleteTodo,
         toggleDone,

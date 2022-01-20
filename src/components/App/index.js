@@ -14,7 +14,7 @@ export function App() {
   
   const {
     todoList,
-    setTodoList,
+    setSynchronized,
     addTodo,
     deleteTodo,
     toggleDone,
@@ -71,7 +71,7 @@ export function App() {
       setShowingAddDialog={setShowingAddDialog}
     />
 
-    <StorageAlertWithStorageListener key={"TODOS_V1"} onDetected={setTodoList}/>
+    <StorageAlertWithStorageListener storageKey={"TODOS_V1"} setSynchronized={setSynchronized}/>
     
   </div>);
 }
