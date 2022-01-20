@@ -60,6 +60,7 @@ function useTodos() {
 
     return {
         todoList,
+        setTodoList,
         addTodo,
         deleteTodo,
         toggleDone,

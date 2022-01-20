@@ -8,12 +8,13 @@ import { TodoTextFilter } from '../TodoTextFilter';
 import { FaPlus } from 'react-icons/fa';
 import { TodoHeader } from '../TodoHeader';
 import { useTodos } from './useTodos';
-
+import { StorageAlertWithStorageListener } from '../StorageAlert';
 
 export function App() {
   
   const {
     todoList,
+    setTodoList,
     addTodo,
     deleteTodo,
     toggleDone,
@@ -69,5 +70,8 @@ export function App() {
       showingAddDialog={showingAddDialog} 
       setShowingAddDialog={setShowingAddDialog}
     />
+
+    <StorageAlertWithStorageListener key={"TODOS_V1"} onDetected={setTodoList}/>
+    
   </div>);
 }
