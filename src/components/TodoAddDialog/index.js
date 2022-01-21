@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./style.css"
 import { CustomModalDialog } from '../Modal';
 import { Warning, check } from '../Warning';
@@ -37,7 +37,7 @@ export function TodoAddDialog({
         setWarningMessages(errorMessages);
     }
 
-    useEffect(() => {
+    useEffect((textInputRef, newTodo) => {
         textInputRef?.current?.select()
         setNewTodo({...newTodo, name:""});
         setWarningMessages([])

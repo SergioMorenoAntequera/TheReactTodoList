@@ -1,5 +1,5 @@
 import './style.css';
-import { useContext, useRef } from 'react';
+import { useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 export function TodoTextFilter( { setFilterText, loading }) {

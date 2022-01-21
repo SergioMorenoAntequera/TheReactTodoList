@@ -7,7 +7,7 @@ export function TodoCounter( {todoList, todoListFiltered, loading} ) {
   let text = done +"/"+ total
   if(loading) text = "..."
 
-  let celeb = total != 0 && done===total && !loading
+  let celeb = total !== 0 && done===total && !loading
   let cpTopPos = done * 100 / total;
   let cpBotPos = done !== total ? cpTopPos-5 : 100;
   if(loading) {

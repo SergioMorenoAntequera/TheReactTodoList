@@ -7,7 +7,7 @@ export const useLocalStorage = (name, defaultValue) => {
     const [error, setError] = useState("")
 
     try {
-        useEffect(() => {
+        useEffect((defaultValue) => {
             setTimeout(() => {
                 let inLocalStorage = localStorage.getItem(name)
                 let parsedLocalStorage;
