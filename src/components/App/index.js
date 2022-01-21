@@ -30,7 +30,7 @@ export function App() {
   return (<div className='App'>
 
     <h1 className='title'> The React <br/> Todo List </h1>
-    <p className='subTitle'> If you don't do a Todo List, <br/> do you even React bro? </p>
+    <p className='subTitle'> If you don't have a Todo List, <br/> do you even React? </p>
 
     <TodoHeader loading={loading}>
       <TodoTextFilter 

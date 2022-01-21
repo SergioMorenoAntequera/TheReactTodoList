@@ -4,18 +4,18 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 function useTodos() {
 
     const defTodos = [
-        {id:1, name:"📚 Features implemented:", done:true},
-        {id:2, name:"✨ React Hooks", done:false},
-        {id:8, name:"🧱 Component Composition", done:false},
-        {id:3, name:"🔮 React Custom Hooks", done:false},
-        {id:4, name:"👉 React Refferences", done:false},
-        {id:5, name:"🚀 React Portals", done:false},
-        {id:6, name:"📝 React Context", done:false},
-        {id:9, name:"➡️ Render Props", done:false},
-        {id:10, name:"⬅️ Render Functions", done:false},
-        {id:11, name:"☁️ High Order Component", done:false},
-        {id:12, name:"🌐 Instance Synchronization", done:false},
-        {id:7, name:"📒 Local Storage", done:false},
+        {id:1, name:"📚 Features implemented:", done:false},
+        {id:2, name:"✨ React Hooks", done:true},
+        {id:8, name:"🧱 Component Composition", done:true},
+        {id:3, name:"🔮 React Custom Hooks", done:true},
+        {id:4, name:"👉 React Refferences", done:true},
+        {id:5, name:"🚀 React Portals", done:true},
+        {id:6, name:"📝 React Context", done:true},
+        {id:9, name:"➡️ Render Props", done:true},
+        {id:10, name:"⬅️ Render Functions", done:true},
+        {id:11, name:"☁️ High Order Component", done:true},
+        {id:12, name:"🌐 Instance Synchronization", done:true},
+        {id:7, name:"📒 Local Storage", done:true},
         {id:13, name:"💖 Hope you love this", done:false},
     ]
 

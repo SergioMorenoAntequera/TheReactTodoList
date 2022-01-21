@@ -6,16 +6,40 @@
     border-radius: 4px;
     height: 2em;
     margin-bottom: 10px;
-}
-.TodoCounter.celeb {
-    border-color: #005eff;
-    background-color: #005eff;
+    position: relative;
 }
 
 .TodoCounter .main {
     font-weight: bold;
+    text-align: center;
+}
+.TodoCounter.celeb {
+    background-color: #005eff;
+    border-color: #005eff;
+}
+.TodoCounter .main .filtered {
+    font-weight: normal;
 }
 .TodoCounter .main span {margin: 0 1em;}
 .TodoCounter .main.celeb {
     color: white;
+}
+
+.TodoCounter .bg {
+    position: absolute;
+    height: 101%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    transition: .3s;
+    clip-path: polygon(0 0, 15% 0, 10% 100%, 0% 100%);
+    display: grid;
+    place-items: center;
+}
+.TodoCounter .bg .main {
+    color: white;
+}
+.TodoCounter .bg.celeb {
+    background-color: #005eff;
 }
