@@ -13,7 +13,7 @@ export function TodoList({
   render,
   children
 }) {  
-  return (<>
+  return (<div className='TodoList'>
     {error && onError()}
     {loading && onLoading()}
     {!loading && todoList.length === 0 && onEmpty()}
@@ -21,5 +21,5 @@ export function TodoList({
     
     {!loading && !error && render   && todoListFiltered.map(render)}
     {!loading && !error && children && todoListFiltered.map(children)}
-  </>);
+  </div>);
 }

@@ -1,4 +1,4 @@
 .TodoList {
-    max-height: 300px;
+    max-height: 20em;
     overflow-y: auto;
 }

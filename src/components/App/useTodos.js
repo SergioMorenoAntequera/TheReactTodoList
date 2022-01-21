@@ -6,12 +6,17 @@ function useTodos() {
     const defTodos = [
         {id:1, name:"📚 Features implemented:", done:true},
         {id:2, name:"✨ React Hooks", done:false},
+        {id:8, name:"🧱 Component Composition", done:false},
         {id:3, name:"🔮 React Custom Hooks", done:false},
         {id:4, name:"👉 React Refferences", done:false},
         {id:5, name:"🚀 React Portals", done:false},
         {id:6, name:"📝 React Context", done:false},
+        {id:9, name:"➡️ Render Props", done:false},
+        {id:10, name:"⬅️ Render Functions", done:false},
+        {id:11, name:"☁️ High Order Component", done:false},
+        {id:12, name:"🌐 Instance Synchronization", done:false},
         {id:7, name:"📒 Local Storage", done:false},
-        {id:8, name:"💖 Hope you love it", done:false},
+        {id:13, name:"💖 Hope you love this", done:false},
     ]
 
     const {
