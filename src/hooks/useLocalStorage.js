@@ -7,13 +7,12 @@ export const useLocalStorage = (name, defaultValue) => {
     const [error, setError] = useState("")
 
     try {
-        useEffect((defaultValue) => {
+        useEffect(() => {
             setTimeout(() => {
                 let inLocalStorage = localStorage.getItem(name)
                 let parsedLocalStorage;
                 
                 if(!inLocalStorage) {
-                    console.log(inLocalStorage)
                     localStorage.setItem(name, JSON.stringify(defaultValue));
                     parsedLocalStorage = defaultValue;
                 } else {
@@ -44,7 +43,8 @@ export const useLocalStorage = (name, defaultValue) => {
         setSynchronized(state);
     }
     
-    return {storageItem, 
+    return {
+        storageItem, 
         setLocalElement,
         auxSetSynchronized,
         loading, 

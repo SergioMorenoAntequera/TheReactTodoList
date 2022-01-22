@@ -37,7 +37,7 @@ export function TodoAddDialog({
         setWarningMessages(errorMessages);
     }
 
-    useEffect((textInputRef, newTodo) => {
+    useEffect(() => {
         textInputRef?.current?.select()
         setNewTodo({...newTodo, name:""});
         setWarningMessages([])
