@@ -1,7 +1,11 @@
 import { useEffect, useReducer, useState } from "react";
 
-
-
+const initialState = (initialValue) => ({
+    storageItem: initialValue,
+    loading: true,
+    error: false,
+    unSynchronized: false,
+})
 const actionTypes = {
     showing: "SHOWING",
     loading: "LOADING",
@@ -39,15 +43,9 @@ const reducer = (state, action) => {
     }
     return state
 }
+
 export const useLocalStorage = (name, defaultValue) => {
-    const initState = {
-        storageItem: defaultValue,
-        loading: true,
-        error: false,
-        unSynchronized: false,
-    }
-    const [state, dispatch] = useReducer(reducer, initState);
-    console.log(state)
+    const [state, dispatch] = useReducer(reducer, initialState(defaultValue));
 
     const onShow = (storageItem) => dispatch({type:actionTypes.showing, payload:storageItem})
     const onLoading = () => dispatch({type:actionTypes.loading})
