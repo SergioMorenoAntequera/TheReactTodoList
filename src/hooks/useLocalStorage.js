@@ -4,19 +4,19 @@ const initialState = (initialValue) => ({
     storageItem: initialValue,
     loading: true,
     error: false,
-    unSynchronized: false,
+    synchronized: false,
 })
 const actionTypes = {
     showing: "SHOWING",
     loading: "LOADING",
     error: "ERROR",
-    unSynchronized: "UNSYNCRONIZED",
+    synchronized: "SYNCRONIZE",
 }
 const reducerObject = (state, payload) => ({
     [actionTypes.showing]: {
         ...state,
         storageItem: payload,
-        unSynchronized: false,
+        synchronized: true,
         loading: false,
         error: false
     },
@@ -28,16 +28,17 @@ const reducerObject = (state, payload) => ({
     [actionTypes.error]: {
         ...state,
         loading: false,
-        error: true,
+        error: payload,
     },
-    [actionTypes.unSynchronized]: {
+    [actionTypes.synchronized]: {
         ...state,
-        unSynchronized: true,
+        synchronized:payload,
         error: false,
         loading: true,
     },
 })
 const reducer = (state, action) => {
+    console.log(state)
     if(reducerObject(state, action.payload)[action.type]){
         return reducerObject(state, action.payload)[action.type]
     }
@@ -46,17 +47,12 @@ const reducer = (state, action) => {
 
 export const useLocalStorage = (name, defaultValue) => {
     const [state, dispatch] = useReducer(reducer, initialState(defaultValue));
-
+    console.log(state.storageItem)
     const onShow = (storageItem) => dispatch({type:actionTypes.showing, payload:storageItem})
     const onLoading = () => dispatch({type:actionTypes.loading})
-    const onError = () => dispatch({type:actionTypes.error})
-    const onUnSyncronized = () => dispatch({type:actionTypes.unSynchronized})
-    
-    const [storageItem, setStorageItem] = useState(defaultValue)
-    const [synchronized, setSynchronized] = useState(true)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState("")
-
+    const onError = (error) => dispatch({type:actionTypes.error, payload:error})
+    const onSyncronize = (sincronize) => dispatch({type:actionTypes.synchronized, payload:sincronize})
+ 
     try {
         useEffect(() => {
             setTimeout(() => {
@@ -72,9 +68,10 @@ export const useLocalStorage = (name, defaultValue) => {
                 
                onShow(parsedLocalStorage)
             }, 1000);
-        }, [synchronized])
+        }, [state.synchronized])
     } catch(error) {
-        onError()
+        console.log(error)
+        onError(error)
     }
     
     
@@ -83,20 +80,16 @@ export const useLocalStorage = (name, defaultValue) => {
             localStorage.setItem(name, JSON.stringify(newValue))
             onShow(newValue)
         } catch (error) {
-            onError()
+            console.log(error)
+            onError(error)
         }
     }
 
-    const auxSetSynchronized = (state) => {
-        setLoading(true);
-        setSynchronized(state);
-    }
-    
     return {
-        storageItem, 
-        setLocalElement,
-        auxSetSynchronized,
-        loading, 
-        error
+        storageItem: state.storageItem, 
+        setLocalElement: setLocalElement,
+        auxSetSynchronized: onSyncronize,
+        loading: state.loading, 
+        error: state.error
     }
 }
