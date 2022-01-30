@@ -34,5 +34,6 @@ https://sergiomorenoantequera.github.io/TheReactTodoList/
 ## 🎓 Certifications earned:
 - https://platzi.com/p/elseran500/curso/2444-react/diploma/detalle/
 - https://platzi.com/p/elseran500/curso/2457-react-patrones-render/diploma/detalle/
+- https://platzi.com/p/elseran500/curso/2597-react-estado/diploma/detalle/
 
 
